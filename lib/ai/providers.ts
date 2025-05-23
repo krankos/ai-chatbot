@@ -27,7 +27,7 @@ export const myProvider = isTestEnvironment
         'chat-model': fireworks('accounts/fireworks/models/deepseek-v3'),
         'chat-model-reasoning': wrapLanguageModel({
           model: fireworks('accounts/fireworks/models/deepseek-r1-basic'),
-          middleware: extractReasoningMiddleware({ tagName: '<think>' }),
+          middleware: extractReasoningMiddleware({ tagName: 'think' }),
         }),
         'title-model': openai('gpt-4o-mini'),
         'artifact-model': fireworks('accounts/fireworks/models/deepseek-v3'),
