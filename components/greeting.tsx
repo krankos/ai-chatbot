@@ -37,7 +37,7 @@ export const Greeting = () => {
               <WandSparkles
                 size={64}
                 strokeWidth={1.5}
-                className="relative z-10 text-black"
+                className="relative z-10 text-black dark:text-white"
               />
             </motion.div>
 
@@ -46,7 +46,7 @@ export const Greeting = () => {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: 10 }}
               transition={{ delay: 0.2 }}
-              className="text-3xl font-bold tracking-tight text-gray-800 relative overflow-hidden pt-1"
+              className="text-3xl font-bold tracking-tight text-gray-800 dark:text-gray-100 relative overflow-hidden pt-1"
             >
               Compliance Copilot
               {/* Futuristic Silver Glint Animation for Title - Slower */}
@@ -72,7 +72,7 @@ export const Greeting = () => {
               animate={{ opacity: 1, scaleX: 1 }}
               exit={{ opacity: 0, scaleX: 0 }}
               transition={{ delay: 0.3 }}
-              className="h-px w-36 bg-gradient-to-r from-transparent via-gray-300 to-transparent my-2"
+              className="h-px w-36 bg-gradient-to-r from-transparent via-gray-300 dark:via-gray-700 to-transparent my-2"
             />
 
             <motion.p
@@ -80,7 +80,7 @@ export const Greeting = () => {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: 10 }}
               transition={{ delay: 0.4 }}
-              className="text-center text-base text-gray-500 max-w-[340px]"
+              className="text-center text-base text-gray-500 dark:text-gray-400 max-w-[340px]"
             >
               Expert guidance on SAMA regulations for Financial Institutions
             </motion.p>
@@ -119,10 +119,10 @@ export const Greeting = () => {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 10 }}
             transition={{ delay: 0.6 }}
-            className="font-medium text-gray-600 text-center relative inline-block group mt-8"
+            className="font-medium text-gray-600 dark:text-gray-300 text-center relative inline-block group mt-8"
           >
             How may I assist you today?
-            <span className="absolute bottom-[-2px] left-1/2 -translate-x-1/2 w-0 h-px bg-gradient-to-r from-transparent via-gray-400 to-transparent group-hover:w-full transition-all duration-500 ease-out" />
+            <span className="absolute bottom-[-2px] left-1/2 -translate-x-1/2 w-0 h-px bg-gradient-to-r from-transparent via-gray-400 dark:via-gray-600 to-transparent group-hover:w-full transition-all duration-500 ease-out" />
           </motion.p>
         </div>
       </div>
