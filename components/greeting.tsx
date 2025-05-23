@@ -31,7 +31,7 @@ export const Greeting = () => {
                 className="absolute inset-[-150%]
                            bg-gradient-to-r 
                            from-transparent from-45% 
-                           via-white/70 via-50%
+                           via-gray-100/40 dark:via-gray-800/40 via-50%
                            to-transparent to-55%"
               />
               <WandSparkles
@@ -61,7 +61,7 @@ export const Greeting = () => {
                 className="absolute inset-[-150%]
                            bg-gradient-to-r 
                            from-transparent from-45% 
-                           via-gray-100/40 via-50% 
+                           via-gray-100/40 dark:via-gray-800/40 via-50% 
                            to-transparent to-55%"
               />
             </motion.h2>
