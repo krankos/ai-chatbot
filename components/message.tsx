@@ -19,6 +19,7 @@ import { MessageEditor } from './message-editor';
 import { DocumentPreview } from './document-preview';
 import { MessageReasoning } from './message-reasoning';
 import type { UseChatHelpers } from '@ai-sdk/react';
+import { VectorQueryToolComponent } from './vector-query-tool';
 
 const PurePreviewMessage = ({
   chatId,
@@ -124,8 +125,9 @@ const PurePreviewMessage = ({
                       )}
 
                       <div
+                        dir="auto"
                         data-testid="message-content"
-                        className={cn('flex flex-col gap-4', {
+                        className={cn('flex flex-col gap-4 rtl:text-right', {
                           'bg-primary text-primary-foreground px-3 py-2 rounded-xl':
                             message.role === 'user',
                         })}
@@ -183,13 +185,19 @@ const PurePreviewMessage = ({
                           args={args}
                           isReadonly={isReadonly}
                         />
+                      ) : toolName === 'vectorQueryTool' ? (
+                        // Render VectorQueryToolComponent in 'running' state
+                        <VectorQueryToolComponent
+                          args={args}
+                          status={{ type: 'running' }}
+                        />
                       ) : null}
                     </div>
                   );
                 }
 
                 if (state === 'result') {
-                  const { result } = toolInvocation;
+                  const { result, args } = toolInvocation;
 
                   return (
                     <div key={toolCallId}>
@@ -211,6 +219,12 @@ const PurePreviewMessage = ({
                           type="request-suggestions"
                           result={result}
                           isReadonly={isReadonly}
+                        />
+                      ) : toolName === 'vectorQueryTool' ? (
+                        <VectorQueryToolComponent
+                          args={args} // Args from the original call
+                          result={result}
+                          status={{ type: 'complete' }}
                         />
                       ) : (
                         <pre>{JSON.stringify(result, null, 2)}</pre>

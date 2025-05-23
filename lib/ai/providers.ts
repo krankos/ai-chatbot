@@ -3,7 +3,7 @@ import {
   extractReasoningMiddleware,
   wrapLanguageModel,
 } from 'ai';
-import { xai } from '@ai-sdk/xai';
+import { openai } from '@ai-sdk/openai';
 import { isTestEnvironment } from '../constants';
 import {
   artifactModel,
@@ -11,6 +11,7 @@ import {
   reasoningModel,
   titleModel,
 } from './models.test';
+import { fireworks } from '@ai-sdk/fireworks';
 
 export const myProvider = isTestEnvironment
   ? customProvider({
@@ -23,15 +24,15 @@ export const myProvider = isTestEnvironment
     })
   : customProvider({
       languageModels: {
-        'chat-model': xai('grok-2-vision-1212'),
+        'chat-model': fireworks('accounts/fireworks/models/deepseek-v3'),
         'chat-model-reasoning': wrapLanguageModel({
-          model: xai('grok-3-mini-beta'),
-          middleware: extractReasoningMiddleware({ tagName: 'think' }),
+          model: fireworks('accounts/fireworks/models/deepseek-r1-basic'),
+          middleware: extractReasoningMiddleware({ tagName: '<think>' }),
         }),
-        'title-model': xai('grok-2-1212'),
-        'artifact-model': xai('grok-2-1212'),
+        'title-model': openai('gpt-4o-mini'),
+        'artifact-model': fireworks('accounts/fireworks/models/deepseek-v3'),
       },
       imageModels: {
-        'small-model': xai.image('grok-2-image'),
+        'small-model': openai.image('dall-e-3'),
       },
     });

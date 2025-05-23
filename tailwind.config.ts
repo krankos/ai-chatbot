@@ -10,7 +10,12 @@ const config: Config = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['var(--font-geist)'],
+        sans: [
+          '"Noto Sans"',
+          '"Noto Sans Arabic"',
+          'var(--font-geist)',
+          'sans-serif',
+        ],
         mono: ['var(--font-geist-mono)'],
       },
       screens: {
@@ -72,9 +77,26 @@ const config: Config = {
           border: 'hsl(var(--sidebar-border))',
           ring: 'hsl(var(--sidebar-ring))',
         },
+        keyframes: {
+          shine: {
+            '0%': { transform: 'translateX(-100%)' },
+            '100%': { transform: 'translateX(100%)' },
+          },
+          'shine-reverse': {
+            '0%': { transform: 'translateX(100%)' },
+            '100%': { transform: 'translateX(-100%)' },
+          },
+        },
+        animation: {
+          shine: 'shine 3s linear infinite',
+        },
       },
     },
   },
-  plugins: [require('tailwindcss-animate'), require('@tailwindcss/typography')],
+  plugins: [
+    require('tailwindcss-animate'),
+    require('@tailwindcss/typography'),
+    require('tailwindcss-animate'),
+  ],
 };
 export default config;
